@@ -1,0 +1,5 @@
+test04_aws
+https://github.com/settings/tokens?type=beta
+https://github.com/settings/personal-access-tokens/2170129
+
+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
