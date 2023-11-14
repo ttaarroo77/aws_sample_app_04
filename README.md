@@ -73,3 +73,4 @@ Things you may want to cover:
 # aws_sample_app
 # aws_sample_app_04
 # aws_sample_app_04
+# aws_sample_app_04
