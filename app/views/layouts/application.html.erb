@@ -1,19 +1,84 @@
-<!--リスト 3.35:サンプルアプリケーションのレイアウト green-->
+<!--リスト 5.1:構造を追加したWebサイトのレイアウト-->
 <!--app/views/layouts/application.html.erb-->
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all','data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                               'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',
+                               'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
   </head>
-
   <body>
-    <%= yield %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "sample app", '#', id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   '#' %></li>
+            <li><%= link_to "Help",   '#' %></li>
+            <li><%= link_to "Log in", '#' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
+
+
+
+
+<!--  ここから、Chap04   -->
+
+
+<!--リスト 4.3:full_titleヘルパーを使ったWebサイトのレイアウト green-->
+<!--app/views/layouts/application.html.erb-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--  <head>-->
+<!--    <title><    %= full_title(yield(:title)) %></title>-->
+<!--    <    %= csrf_meta_tags %>-->
+<!--    <    %= stylesheet_link_tag    'application', media: 'all',-->
+<!--                               'data-turbolinks-track': 'reload' %>-->
+<!--    <    %= javascript_include_tag 'application',-->
+<!--                               'data-turbolinks-track': 'reload' %>-->
+<!--  </head>-->
+<!--  <body>-->
+<!--    <    %= yield %>-->
+<!--  </body>-->
+<!--</html>-->
+
+
+
+
+
+
+<!--リスト 3.35:サンプルアプリケーションのレイアウト green-->
+<!--app/views/layouts/application.html.erb-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--  <head>-->
+<!--    <title><    %= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>-->
+<!--    <    %= csrf_meta_tags %>-->
+<!--    <    %= stylesheet_link_tag    'application', media: 'all','data-turbolinks-track': 'reload' %>-->
+<!--    <    %= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>-->
+<!--  </head>-->
+
+<!--  <body>-->
+<!--    <    %= yield %>-->
+<!--  </body>-->
+<!--</html>-->
 
 
 
