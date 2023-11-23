@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '5.1.6'
-gem 'bootstrap-sass', '3.3.7'  #リスト 5.5:Gemfileにbootstrap-sassを追加する
-gem 'puma',         '3.9.1'
+gem 'bcrypt',         '3.1.12' # リスト 6.36:bcryptをGemfileに追加する
+gem 'bootstrap-sass', '3.3.7'  # リスト 5.5:Gemfileにbootstrap-sassを追加する
+#gem 'puma',         '3.9.1'
+gem 'puma', '3.12.6' # あるいは最新の安定バージョンに変更
+
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
 gem 'coffee-rails', '4.2.2'

@@ -12,3 +12,15 @@ end
 # class ApplicationController < ActionController::Base
 #   protect_from_forgery with: :exception
 # end
+
+
+
+# 継承元ファイルの情報
+# app/models/application_record.rb
+
+# class ApplicationRecord < ActiveRecord::Base
+#   self.abstract_class = true
+# end
+
+# ActiveRecord::Base の先は不明
+

@@ -1,5 +1,9 @@
-<!--リスト 5.1:構造を追加したWebサイトのレイアウト-->
+<!--リスト 5.12:レイアウトにshimとheaderのパーシャルを追加する-->
+<!--リスト 5.16:レイアウトにfooterパーシャルを追加する-->
 <!--app/views/layouts/application.html.erb-->
+
+<!--#　 追加したパーシャル(shimとheader)で、コードを分割表記して、可読性を上げている　-->
+
 
 <!DOCTYPE html>
 <html>
@@ -10,29 +14,69 @@
                                'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application',
                                'data-turbolinks-track': 'reload' %>
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
-      </script>
-    <![endif]-->
+                               
+    <!--#　↓↓↓　追加した行　↓↓↓　-->
+    <%= render 'layouts/shim' %>
   </head>
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <%= link_to "sample app", '#', id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   '#' %></li>
-            <li><%= link_to "Help",   '#' %></li>
-            <li><%= link_to "Log in", '#' %></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    
+    <!--#　↓↓↓　追加した行　↓↓↓　-->
+    <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
+
+      <!--#　↓↓↓　追加した行　↓↓↓　-->
+      <%= render 'layouts/footer' %>
+      
     </div>
   </body>
 </html>
+
+
+
+<!--リスト 5.12:レイアウトにshimとheaderのパーシャルを追加する-->
+
+
+
+
+<!--リスト 5.1:構造を追加したWebサイトのレイアウト-->
+<!--app/views/layouts/application.html.erb-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--  <head>-->
+<!--    <title><  %= full_title(yield(:title)) %></title>-->
+<!--    <  %= csrf_meta_tags %>-->
+    <!-- 下の行では、コロンやキーやハッシュが使われている。カッコが省略されてる-->
+<!--    <  %= stylesheet_link_tag    'application', media: 'all','data-turbolinks-track': 'reload' %>      -->
+<!--    <  %= javascript_include_tag 'application','data-turbolinks-track': 'reload' %>-->
+    
+    <!--[if lt IE 9]>
+<!--      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">-->
+<!--      </script>-->
+<!--    <![endif]--       >      -->
+    
+<!--  </head>-->
+<!--  <body>-->
+    
+<!--    <header class="navbar navbar-fixed-top navbar-inverse">-->
+<!--      <div class="container">-->
+<!--        <    %= link_to "sample app", '#', id: "logo" %>-->
+<!--        <nav>-->
+<!--          <ul class="nav navbar-nav navbar-right">-->
+<!--            <li><    %= link_to "Home",   '#' %></li>-->
+<!--            <li><    %= link_to "Help",   '#' %></li>-->
+<!--            <li><    %= link_to "Log in", '#' %></li>-->
+<!--          </ul>-->
+<!--        </nav>-->
+<!--      </div>-->
+<!--    </header>-->
+    
+<!--    <div class="container">-->
+<!--      <    %= yield %>-->
+<!--    </div>-->
+<!--  </body>-->
+<!--</html>-->
 
 
 
