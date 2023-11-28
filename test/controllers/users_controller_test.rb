@@ -6,6 +6,7 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new" do
+    # new アクションの結果をテストしている
     get signup_path
     assert_response :success
   end

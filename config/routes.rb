@@ -1,4 +1,4 @@
-# リスト 5.43:ユーザー登録ページのルート red
+# リスト 7.3:Usersリソースをroutesファイルに追加する
 # config/routes.rb
 
 Rails.application.routes.draw do
@@ -7,8 +7,23 @@ Rails.application.routes.draw do
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
   get  '/signup',  to: 'users#new'
+  resources :users    # リスト 7.3:Usersリソースをroutesファイルに追加する
 end
 
+
+
+# リスト 5.43:ユーザー登録ページのルート red
+# リスト 5.27:静的なページのルーティング一覧 red
+# config/routes.rb
+
+# Rails.application.routes.draw do
+#   root 'static_pages#home'
+#   get  '/help',    to: 'static_pages#help'
+#   get  '/about',   to: 'static_pages#about'
+#   get  '/contact', to: 'static_pages#contact'
+#   get  '/signup',  to: 'users#new'
+# #   get 'users/new'   # リスト 5.27:静的なページのルーティング一覧 red
+# end
 
 
 # リスト 5.27:静的なページのルーティング一覧 red

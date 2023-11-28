@@ -1,7 +1,10 @@
 <!--リスト 5.45:ボタンにユーザー登録ページへのリンクを追加する-->
+<!--リスト 5.2:サインアップページへのリンクがあるHomeページ-->
+
 <!--app/views/static_pages/home.html.erb-->
 
 <div class="center jumbotron">
+  
   <h1>Welcome to the Sample App</h1>
 
   <h2>
@@ -13,8 +16,7 @@
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
 
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+<%= link_to image_tag("rails.png", alt: "Rails logo"),'http://rubyonrails.org/' %>
 
 
 

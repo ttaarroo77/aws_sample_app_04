@@ -1,7 +1,6 @@
 # リスト 5.24:Contactページ用のアクションを追加する red
 # app/controllers/static_pages_controller.rb
 
-
 class StaticPagesController < ApplicationController
   def home
     #app/views/
