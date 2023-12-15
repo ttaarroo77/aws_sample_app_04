@@ -6,11 +6,11 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
+    <%= form_for(@user) do |f| %>     <!--- form_for：ブロック付き引数  ->
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :name %>    <!--以下、f.key に :value を 入れている-->
+      <%= f.text_field :name, class: 'form-control' %>　<!--form-control： エラー検知するための装飾用class-->
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
@@ -18,13 +18,54 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :password_confirmation, "Confirmation" %>    <!--ラベルが fonfirmation-->
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
+
+
+<!--label要素にfor属性を指定するメリット-->
+<!--  ・input要素にlabel要素が視覚的に紐付く-->
+<!--  ・input要素にフォーカスが当たった際にlabel要素を読み上げできる-->
+<!--  ・label要素をクリックしてもフォームがアクティブ化する-->
+<!--参考：　https://style.potepan.com/articles/20037.html-->
+
+
+<!--次の埋め込みRubyは、-->
+<!--<  %= f.label :name %>-->
+<!--<  %= f.text_field :name %>-->
+
+<!--このようなHTMLを生成していることがわかります。-->
+<!--<label for="user_name">Name</label>-->
+<!--<input id="user_name" name="user[name]" type="text" />-->
+
+
+<!--また、次の埋め込みRubyは-->
+<!--<  %= f.label :email %>-->
+<!--<  %= f.email_field :email %>-->
+
+<!--このようなHTMLを生成していることもわかります。-->
+<!--<label for="user_email">Email</label>-->
+<!--<input id="user_email" name="user[email]" type="email" />-->
+
+
+<!--同様にして次のコードは、-->
+<!--<  %= f.label :password %>-->
+<!--<  %= f.password_field :password %>-->
+
+<!--こういったHTMLを生成しています。-->
+<!--<label for="user_password">Password</label>-->
+<!--<input id="user_password" name="user[password]" type="password" />-->
+
+
+
+
+
+
+
 
 
 

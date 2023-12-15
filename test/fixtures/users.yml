@@ -1,3 +1,15 @@
+# リスト 8.22:ユーザーログインのテストで使うfixture
+# test/fixtures/users.yml
+
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
+
+
+
+
+
 # リスト 6.31:空のfixtureファイル green
 # test/fixtures/users.yml
 

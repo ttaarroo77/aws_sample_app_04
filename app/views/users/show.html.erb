@@ -6,13 +6,39 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= gravatar_for @user %>      <!--    メソット名がgravatar_for。引数が @user-->
+        <%= @user.name %>    <!--< %= %>　：変数の値などに使用する　-->
+                          <!--デフォルトでは、メールなどは表示しない    -->
       </h1>
     </section>
   </aside>
 </div>
 
+
+<!--例えば、下記のコードを入力すると、-->
+<!--< % %>　：変数の定義などに使用する-->
+<!--< %= %>　：変数の値などに使用する。評価した結果を画面に出力するので、 %= -->
+
+<!--top.html.erb-->
+<!--< % language = "Ruby" %>-->
+<!-- <P>< %= language %>を学ぶ</P>-->
+
+<!--この記事、絶対に要チェック-->
+<!--https://qiita.com/natsumi_23/items/42f4b075e417aaf925df-->
+
+
+
+<!--< %= gravatar_for @user %>      <!--    メソット名がgravatar_for。引数が @user-->-->
+<!--これって、どういう意味？下の関数との関連性は？-->
+
+<!--app/helpers/users_helper.rb-->
+<!--module UsersHelper-->
+
+<!--def gravatar_for    #  引数で与えられたユーザーのGravatar画像を返す--> 
+    <!--gravatar_id =  Digest::MD5 うんぬん・・-->
+    <!--gravatar_url =  -->
+
+<!---------------------------------------------------------------------------->
 
 
 <!--リスト 7.8:ユーザー表示ビューに名前とGravatarを表示する-->

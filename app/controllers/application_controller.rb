@@ -1,13 +1,23 @@
-# リスト 3.4:helloアクションをApplicationコントローラーに追加する
+# リスト 8.13:ApplicationコントローラにSessionヘルパーモジュールを読み込む
 # app/controllers/application_controller.rb
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
-  def hello
-    render html: "hello, world!"
-  end
+  include SessionsHelper
 end
+
+
+# リスト 3.4:helloアクションをApplicationコントローラーに追加する
+# app/controllers/application_controller.rb
+
+# class ApplicationController < ActionController::Base
+#   protect_from_forgery with: :exception
+
+#   def hello
+#     render html: "hello, world!"
+#   end
+# end
+
 
 # class ApplicationController < ActionController::Base
 #   protect_from_forgery with: :exception
