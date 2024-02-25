@@ -24,7 +24,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_difference 'User.count', 1 do
       post users_path, params: { user: { name:  "Example User",
                                          email: "user@example.com",
-                                         password:              "password",
+                                         password: "password",
                                          password_confirmation: "password" } }
     end
     follow_redirect!  # リダイレクト先にアクセス // よく分かってない
@@ -40,9 +40,9 @@ end
 # ------------------------------------------------------------------------------------------
 
 
-# # test/integration/users_signup_test.rb
-# # リスト 7.23:無効なユーザー登録に対するテスト green
-# # リスト 7.33:有効なユーザー登録に対するテスト green
+# test/integration/users_signup_test.rb
+# リスト 7.23:無効なユーザー登録に対するテスト green
+# リスト 7.33:有効なユーザー登録に対するテスト green
 
 
 # require 'test_helper'
@@ -81,8 +81,8 @@ end
 
 # 以下のコマンドは、rails routes で意味が分かる。
 # getリクエスト、postリクエストなど、
-    # get signup_path
-    # post users_path
+#     get signup_path
+#     post users_path
 
 
 # assert_no_diffrence などは、以下URLを参考

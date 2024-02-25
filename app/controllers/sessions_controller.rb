@@ -1,5 +1,6 @@
-# リスト 8.30:セッションを破棄する (ユーザーのログアウト)
+# リスト 9.23:[remember me] チェックボックスの送信結果を処理する
 # app/controllers/sessions_controller.rb
+
 
 class SessionsController < ApplicationController
 
@@ -10,22 +11,51 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)    #リスト 8.7:
     if user && user.authenticate(params[:session][:password])     #リスト 8.7:
       log_in user
-      redirect_to user
-      # ユーザーログイン後にユーザー情報のページにリダイレクトする
+      # remember user   #   9.7:ログインしてユーザーを保持
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)   #  9.23:[remember me] チェックボックスの送信結果を処理
+      redirect_to user  # ユーザーログイン後にユーザー情報のページにリダイレクト
     else
-      flash.now[:danger] = 'Invalid email/password combination'      # リスト 8.11:ログイン失敗時の正しい処理 green
-      # flash[:danger] = 'Invalid email/password combination' #リスト 8.8:   # 本当は正しくない
-      render 'new'    # リスト 8.6:      
-      
+      flash.now[:danger] = 'Invalid email/password combination'   #  8.11:ログイン失敗時の正しい処理
+      # flash[:danger] = 'Invalid email/password combination' # 8.8:   # 本当は正しくない
+      render 'new'    # リスト 8.6:
     end
   end
 
   def destroy    # リスト 8.30:セッションを破棄する (ユーザーのログアウト)
-    log_out
+    log_out if logged_in?   # 9.16    ログイン中の場合のみログアウトする 
     redirect_to root_url
   end
   
 end
+
+
+
+# # リスト 8.30:セッションを破棄する (ユーザーのログアウト)
+# # app/controllers/sessions_controller.rb
+
+# class SessionsController < ApplicationController
+
+#   def new
+#   end
+
+#   def create
+#     user = User.find_by(email: params[:session][:email].downcase)    #リスト 8.7:
+#     if user && user.authenticate(params[:session][:password])     #リスト 8.7:
+#       log_in user
+#       redirect_to user  # ユーザーログイン後にユーザー情報のページにリダイレクト
+#     else
+#       flash.now[:danger] = 'Invalid email/password combination'   #  8.11:ログイン失敗時の正しい処理
+#       # flash[:danger] = 'Invalid email/password combination' # 8.8:   # 本当は正しくない
+#       render 'new'    # リスト 8.6:
+#     end
+#   end
+
+#   def destroy    # リスト 8.30:セッションを破棄する (ユーザーのログアウト)
+#     log_out
+#     redirect_to root_url
+#   end
+  
+# end
 
 
 
