@@ -1,4 +1,6 @@
-<!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する-->
+<!--リスト 10.40:ユーザー一覧ページへのリンクを更新する-->
+<!--リスト 10.4:レイアウトの “Settings” リンクを更新する-->
+
 <!--app/views/layouts/_header.html.erb-->
 
 <header class="navbar navbar-fixed-top navbar-inverse">
@@ -8,28 +10,72 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", help_path %></li>
-        <% if logged_in? %>     <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
-          <li><%= link_to "Users", '#' %></li>        <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+        <% if logged_in? %> 
+          <li><%= link_to "Users", users_path %></li>   <!-- 10.40:ユーザー一覧ページへのリンクを更新 -->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>        <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
-              <li><%= link_to "Settings", '#' %></li>        <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+              <li><%= link_to "Profile", current_user %></li>   
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>  <!--リスト 10.4:レイアウトの “Settings” リンクを更新する-->
               <li class="divider"></li>
               <li>
-                <%= link_to "Log out", logout_path, method: :delete %>        <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+                <%= link_to "Log out", logout_path, method: :delete %>    
               </li>
             </ul>
           </li>
-        <% else %>        <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
-          <li><%= link_to "Log in", login_path %></li>        <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
-        <% end %>        <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+        <% else %>  
+          <li><%= link_to "Log in", login_path %></li>  
+        <% end %> 
       </ul>
     </nav>
   </div>
 </header>
+
+
+
+
+<!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する-->
+<!--app/views/layouts/_header.html.erb-->
+
+<!--<header class="navbar navbar-fixed-top navbar-inverse">-->
+<!--  <div class="container">-->
+<!--    < %= link_to "sample app", root_path, id: "logo" %>-->
+<!--    <nav>-->
+<!--      <ul class="nav navbar-nav navbar-right">-->
+<!--        <li>< %= link_to "Home", root_path %></li>-->
+<!--        <li>< %= link_to "Help", help_path %></li>-->
+<!--        < % if logged_in? %> -->
+        <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+<!--          <li>< %= link_to "Users", '#' %></li>  -->
+          <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+<!--          <li class="dropdown">-->
+<!--            <a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+<!--              Account <b class="caret"></b>-->
+<!--            </a>-->
+<!--            <ul class="dropdown-menu">-->
+<!--              <li>< %= link_to "Profile", current_user %></li>   -->
+              <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+<!--              <li>< %= link_to "Settings", '#' %></li>   -->
+              <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+<!--              <li class="divider"></li>-->
+<!--              <li>-->
+<!--                < %= link_to "Log out", logout_path, method: :delete %>    -->
+                <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </li>-->
+<!--        < % else %>  -->
+        <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+<!--          <li>< %= link_to "Log in", login_path %></li>  -->
+          <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+<!--        < % end %>   -->
+        <!--リスト 8.19:ログイン中のユーザー用のレイアウトのリンクを変更する -->
+<!--      </ul>-->
+<!--    </nav>-->
+<!--  </div>-->
+<!--</header>-->
 
 
 

@@ -1,7 +1,28 @@
-# リスト 8.25:ユーザー登録中にログインする
+# # リスト 10.59:beforeフィルターでdestroyアクションを管理者だけに限定する
+
+# リスト 10.58:実際に動作するdestroyアクションを追加する
+# リスト 10.46:indexアクションでUsersをページネートする
+# リスト 10.36:ユーザーのindexアクション
+# リスト 10.35:indexアクションにはログインを要求する green
+# リスト 10.31:ログインユーザー用beforeフィルターにstore_locationを追加する red
+# リスト 10.28:最終的なcorrect_userの実装 green
+# リスト 10.25:beforeフィルターを使って編集/更新ページを保護する green
+# リスト 10.21:beforeフィルターを再び有効化する green
+# リスト 10.19:セキュリティモデルを確認するためにbeforeフィルターをコメントアウトする green
+# リスト 10.15:beforeフィルターにlogged_in_userを追加する red
+# リスト 10.12:ユーザーのupdateアクション red
+# リスト 10.8:ユーザーのupdateアクションの初期実装
+# リスト 10.1:ユーザーのeditアクション
+
 # app/controllers/users_controller.rb
 
+
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]  # 10.58: 
+
+  def index # 10.35
+    @users = User.paginate(page: params[:page]) # 10.46: # 10.36:
+  end
 
   def show
     @user = User.find(params[:id])
@@ -13,13 +34,33 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      log_in @user    #  リスト 8.25:ユーザー登録中にログインする
+    if @user.save   #  10.8:
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
-      render 'new'
+      render 'new'  #  10.8:
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])   # 10.1:
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)  #  10.8:
+      flash[:success] = "Profile updated" # 10.12:
+      redirect_to @user # 10.12:
+    else
+      render 'edit'  #  10.8:
+    end
+  end
+
+  def destroy    # 10.58:
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
   end
 
   private
@@ -28,7 +69,64 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
+
+    # beforeアクション
+
+    # ログイン済みユーザーかどうか確認    # 10.15:
+    def logged_in_user
+      unless logged_in?
+        store_location  # 10.31
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
+    # 正しいユーザーかどうか確認 
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)  # 10.28  # 10.25:
+    end
+
+    # 管理者かどうか確認   # 10.59:
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+    
 end
+
+
+
+# リスト 8.25:ユーザー登録中にログインする
+# app/controllers/users_controller.rb
+
+# class UsersController < ApplicationController
+
+#   def show
+#     @user = User.find(params[:id])
+#   end
+
+#   def new
+#     @user = User.new
+#   end
+
+#   def create
+#     @user = User.new(user_params)
+#     if @user.save
+#       log_in @user    #  リスト 8.25:ユーザー登録中にログインする
+#       flash[:success] = "Welcome to the Sample App!"
+#       redirect_to @user
+#     else
+#       render 'new'
+#     end
+#   end
+
+#   private
+
+#     def user_params
+#       params.require(:user).permit(:name, :email, :password,
+#                                   :password_confirmation)
+#     end
+# end
 
 
 

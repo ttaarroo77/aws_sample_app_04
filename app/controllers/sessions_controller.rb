@@ -1,8 +1,5 @@
-# リスト 9.23:[remember me] チェックボックスの送信結果を処理する
+# リスト 10.32:フレンドリーフォワーディングを備えたcreateアクション green
 # app/controllers/sessions_controller.rb
-
-# リスト 9.16:ログイン中の場合のみログアウトする green
-# リスト 9.7:ログインしてユーザーを保持する
 
 
 class SessionsController < ApplicationController
@@ -14,8 +11,8 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)  # 9.23:[remember me] チェックボックスの送信結果を処理
-      redirect_to user
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)  
+      redirect_back_or user   # 10.32:
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
@@ -23,10 +20,43 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out if logged_in?   #  9.16:ログイン中の場合のみログアウトする green
+    log_out if logged_in? 
     redirect_to root_url
   end
 end
+
+
+
+
+# リスト 9.23:[remember me] チェックボックスの送信結果を処理する
+# app/controllers/sessions_controller.rb
+
+# リスト 9.16:ログイン中の場合のみログアウトする green
+# リスト 9.7:ログインしてユーザーを保持する
+
+
+# class SessionsController < ApplicationController
+
+#   def new
+#   end
+
+#   def create
+#     user = User.find_by(email: params[:session][:email].downcase)
+#     if user && user.authenticate(params[:session][:password])
+#       log_in user
+#       params[:session][:remember_me] == '1' ? remember(user) : forget(user)  # 9.23:[remember me] チェックボックスの送信結果を処理
+#       redirect_to user
+#     else
+#       flash.now[:danger] = 'Invalid email/password combination'
+#       render 'new'
+#     end
+#   end
+
+#   def destroy
+#     log_out if logged_in?   #  9.16:ログイン中の場合のみログアウトする green
+#     redirect_to root_url
+#   end
+# end
 
 
 
