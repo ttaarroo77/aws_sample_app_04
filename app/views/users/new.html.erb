@@ -1,4 +1,4 @@
-<!--リスト 7.20:ユーザー登録失敗時にエラーメッセージが表示されるようにする-->
+<!--リスト 13.43:ユーザー登録時のエラー表示を更新する-->
 <!--app/views/users/new.html.erb-->
 
 <% provide(:title, 'Sign up') %>
@@ -6,25 +6,50 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>     <!--- form_for：ブロック付き引数  ->
-      <%= render 'shared/error_messages' %>
-
-      <%= f.label :name %>    <!--以下、f.key に :value を 入れている-->
-      <%= f.text_field :name, class: 'form-control' %>　<!--form-control： エラー検知するための装飾用class-->
-
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
-
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>    <!--ラベルが fonfirmation-->
+      <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
+
+
+<!--リスト 7.20:ユーザー登録失敗時にエラーメッセージが表示されるようにする-->
+<!--app/views/users/new.html.erb-->
+
+<!--< % provide(:title, 'Sign up') %>-->
+<!--<h1>Sign up</h1>-->
+
+<!--<div class="row">-->
+<!--  <div class="col-md-6 col-md-offset-3">-->
+<!--    < %= form_for(@user) do |f| %>     <!--- form_for：ブロック付き引数  ->-->
+<!--      < %= render 'shared/error_messages' %>-->
+
+<!--      < %= f.label :name %>    <!--以下、f.key に :value を 入れている-->-->
+<!--      < %= f.text_field :name, class: 'form-control' %>　<!--form-control： エラー検知するための装飾用class-->-->
+
+<!--      < %= f.label :email %>-->
+<!--      < %= f.email_field :email, class: 'form-control' %>-->
+
+<!--      < %= f.label :password %>-->
+<!--      < %= f.password_field :password, class: 'form-control' %>-->
+
+<!--      < %= f.label :password_confirmation, "Confirmation" %>    <!--ラベルが fonfirmation-->-->
+<!--      < %= f.password_field :password_confirmation, class: 'form-control' %>-->
+
+<!--      < %= f.submit "Create my account", class: "btn btn-primary" %>-->
+<!--    < % end %>-->
+<!--  </div>-->
+<!--</div>-->
 
 
 <!--label要素にfor属性を指定するメリット-->

@@ -1,18 +1,34 @@
+<!--リスト 13.41:Userオブジェクト以外でも動作するようにerror_messagesパーシャルを更新する red-->
+<!--app/views/shared/_error_messages.html.erb-->
+
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(object.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <!--リスト 7.21:フォーム送信時にエラーメッセージを表示するためのパーシャル-->
 <!--app/views/shared/_error_messages.html.erb-->
 
 <!--エラーが出た時に、警告のメッセージを出力する追加メッセージ。-->
 <!--追加メッセージ：パーシャル、　という-->
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-danger">
-      The form contains <%= pluralize(@user.errors.count, "error") %>.
-    </div>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<!--< % if @user.errors.any? %>-->
+<!--  <div id="error_explanation">-->
+<!--    <div class="alert alert-danger">-->
+<!--      The form contains <c%= pluralize(@user.errors.count, "error") %>.-->
+<!--    </div>-->
+<!--    <ul>-->
+<!--    < % @user.errors.full_messages.each do |msg| %>-->
+<!--      <li>< %= msg %></li>-->
+<!--    < % end %>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--< % end %>-->

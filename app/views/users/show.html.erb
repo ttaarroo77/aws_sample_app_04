@@ -1,4 +1,4 @@
-<!--リスト 7.10:ユーザーのshowビューにサイドバーを追加する-->
+<!--リスト 13.24:マイクロポストをユーザーのshowページ (プロフィール画面) に追加する-->
 <!--app/views/users/show.html.erb-->
 
 <% provide(:title, @user.name) %>
@@ -6,13 +6,38 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>      <!--    メソット名がgravatar_for。引数が @user-->
-        <%= @user.name %>    <!--< %= %>　：変数の値などに使用する　-->
-                          <!--デフォルトでは、メールなどは表示しない    -->
+        <%= gravatar_for @user %>
+        <%= @user.name %>
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
 </div>
+
+
+<!--リスト 7.10:ユーザーのshowビューにサイドバーを追加する-->
+<!--app/views/users/show.html.erb-->
+
+<!--< % provide(:title, @user.name) %>-->
+<!--<div class="row">-->
+<!--  <aside class="col-md-4">-->
+<!--    <section class="user_info">-->
+<!--      <h1>-->
+<!--        < %= gravatar_for @user %>      <!--    メソット名がgravatar_for。引数が @user-->
+<!--        < %= @user.name %>    <!--< %= %>　：変数の値などに使用する　-->
+                          <!--デフォルトでは、メールなどは表示しない    -->
+<!--      </h1>-->
+<!--    </section>-->
+<!--  </aside>-->
+<!--</div>-->
 
 
 <!--例えば、下記のコードを入力すると、-->
@@ -28,7 +53,7 @@
 
 
 
-<!--< %= gravatar_for @user %>      <!--    メソット名がgravatar_for。引数が @user-->-->
+<!--< %= gravatar_for @user %>      <!--    メソット名がgravatar_for。引数が @user-->
 <!--これって、どういう意味？下の関数との関連性は？-->
 
 <!--app/helpers/users_helper.rb-->

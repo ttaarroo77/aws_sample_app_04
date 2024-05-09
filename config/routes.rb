@@ -1,6 +1,7 @@
-#リスト 8.2:
-# リソースを追加して標準的なRESTfulアクションをgetできるようにする red
-# config/routes.rb
+#リスト 13.30:マイクロポストリソースのルーティング
+#  config/routes.rb
+
+
 
 Rails.application.routes.draw do
   root   'static_pages#home'
@@ -8,11 +9,52 @@ Rails.application.routes.draw do
   get    '/about',   to: 'static_pages#about'
   get    '/contact', to: 'static_pages#contact'
   get    '/signup',  to: 'users#new'
-  get    '/login',   to: 'sessions#new'   #リスト 8.2:
-  post   '/login',   to: 'sessions#create'   #リスト 8.2:
-  delete '/logout',  to: 'sessions#destroy'   #リスト 8.2:
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
   resources :users
+  resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :microposts,          only: [:create, :destroy]        				#  13.30:
 end
+
+
+# リスト 12.1:パスワード再設定用リソースを追加する
+# config/routes.rb
+
+# Rails.application.routes.draw do
+#   root   'static_pages#home'
+#   get    '/help',    to: 'static_pages#help'
+#   get    '/about',   to: 'static_pages#about'
+#   get    '/contact', to: 'static_pages#contact'
+#   get    '/signup',  to: 'users#new'
+#   get    '/login',   to: 'sessions#new'
+#   post   '/login',   to: 'sessions#create'
+#   delete '/logout',  to: 'sessions#destroy'
+#   resources :users
+#   resources :account_activations, only: [:edit]
+#   resources :password_resets,     only: [:new, :create, :edit, :update]      #  12.1:
+# end
+
+
+
+
+
+#リスト 8.2:
+# リソースを追加して標準的なRESTfulアクションをgetできるようにする red
+# # config/routes.rb
+
+# Rails.application.routes.draw do
+#   root   'static_pages#home'
+#   get    '/help',    to: 'static_pages#help'
+#   get    '/about',   to: 'static_pages#about'
+#   get    '/contact', to: 'static_pages#contact'
+#   get    '/signup',  to: 'users#new'
+#   get    '/login',   to: 'sessions#new'   #リスト 8.2:
+#   post   '/login',   to: 'sessions#create'   #リスト 8.2:
+#   delete '/logout',  to: 'sessions#destroy'   #リスト 8.2:
+#   resources :users
+# end
 
 
 

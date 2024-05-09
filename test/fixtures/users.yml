@@ -1,3 +1,47 @@
+# リスト 11.5:fixtureのユーザーを有効にしておく
+# test/fixtures/users.yml
+
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
+  admin: true
+  activated: true 
+  # activated: false # ここを書き換えた 2024-04-07
+  activated_at: <%= Time.zone.now %>
+
+archer:
+  name: Sterling Archer
+  email: duchess@example.gov
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+lana:
+  name: Lana Kane
+  email: hands@example.gov
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+malory:
+  name: Malory Archer
+  email: boss@example.gov
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+<% end %>
+
+
+
 # リスト 10.60:fixture内の最初のユーザーを管理者にする
 # リスト 10.47:fixtureにさらに30人のユーザーを追加する
 # リスト 10.23:fixtureファイルに２人目のユーザーを追加する
@@ -6,33 +50,33 @@
 
 
 
-michael:
-  name: Michael Example
-  email: michael@example.com
-  password_digest: <%= User.digest('password') %>
-  admin: true   # 10.60
+# michael:
+#   name: Michael Example
+#   email: michael@example.com
+#   password_digest: <%= User.digest('password') %>
+#   admin: true   # 10.60
 
-archer:     # 10.23
-  name: Sterling Archer
-  email: duchess@example.gov
-  password_digest: <%= User.digest('password') %>
+# archer:     # 10.23
+#   name: Sterling Archer
+#   email: duchess@example.gov
+#   password_digest: <%= User.digest('password') %>
 
-lana:   # 10.47:
-  name: Lana Kane
-  email: hands@example.gov
-  password_digest: <%= User.digest('password') %>
+# lana:   # 10.47:
+#   name: Lana Kane
+#   email: hands@example.gov
+#   password_digest: <%= User.digest('password') %>
 
-malory:   # 10.47:
-  name: Malory Archer
-  email: boss@example.gov
-  password_digest: <%= User.digest('password') %>
+# malory:   # 10.47:
+#   name: Malory Archer
+#   email: boss@example.gov
+#   password_digest: <%= User.digest('password') %>
 
-<% 30.times do |n| %>   # 10.47:
-user_<%= n %>:
-  name:  <%= "User #{n}" %>
-  email: <%= "user-#{n}@example.com" %>
-  password_digest: <%= User.digest('password') %>
-<% end %>
+# <% 30.times do |n| %>   # 10.47:
+# user_<%= n %>:
+#   name:  <%= "User #{n}" %>
+#   email: <%= "user-#{n}@example.com" %>
+#   password_digest: <%= User.digest('password') %>
+# <% end %>
 
 
 
