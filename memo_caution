@@ -1,6 +1,8 @@
 2024年5月9日　
 以下のtestファイルを削除。　　(テストエラー解決を後回しするため)
 
+後日、修正の必要あり
+
 # リスト 13.15:マイクロポスト用のfixture
 # test/fixtures/microposts.yml
 
@@ -23,3 +25,4 @@
 # リスト 13.54:間違ったユーザーによるマイクロポスト削除に対してテストする green
 # リスト 13.31:Micropostsコントローラの認可テスト red
 # test/controllers/microposts_controller_test.rb
+
